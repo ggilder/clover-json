@@ -20,6 +20,7 @@ describe("Check if it can parse a clover file", function () {
             assert.equal(result[0].functions.details[0].hit, 2);
             assert.equal(result[0].lines.details[0].line, 6);
             assert.equal(result[0].lines.details[0].hit, 2);
+            assert.equal(result[0].path, "lib/client.js");
             done();
         }).catch(function (err) {
             console.log(err)

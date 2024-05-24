@@ -12,10 +12,10 @@ var classDetailsFromProjects = function (projects) {
     var parseFile = function (fileObj, packageName) {
         if (fileObj.hasOwnProperty("class")) {
             fileObj["class"].forEach(function(classObj) {
-                classDetails = classDetails.concat({ name: classObj.$.name, metrics: classObj.metrics[0], fileName: fileObj.$.name, fileMetrics: fileObj.metrics[0], lines: fileObj.line, packageName: packageName });
+                classDetails = classDetails.concat({ name: classObj.$.name, metrics: classObj.metrics[0], fileName: fileObj.$.name, path: fileObj.$.path, fileMetrics: fileObj.metrics[0], lines: fileObj.line, packageName: packageName });
             });
         } else {
-            classDetails = classDetails.concat({ name: null, metrics: null, fileName: fileObj.$.name, fileMetrics: fileObj.metrics[0], lines: fileObj.line, packageName: packageName });
+            classDetails = classDetails.concat({ name: null, metrics: null, fileName: fileObj.$.name, path: fileObj.$.path, fileMetrics: fileObj.metrics[0], lines: fileObj.line, packageName: packageName });
         }
     }
 
@@ -68,6 +68,7 @@ var unpackage = function (projects) {
         var classCov = {
             title: c.name,
             file: c.fileName,
+            path: c.path,
             functions: {
                 found: methodStats.length,
                 hit: 0,
